@@ -9,21 +9,19 @@ class LogManager
   OUTPUT_FILE_JOB_RECOMMENDATION = 'c:/Log/JobRecommendationLog.txt'
 
   def neo_error
-    output_log_to_file(OUTPUT_FILE_NEO_ERROR, get_data_match(/^Neo.Error:/))
+    output_log_to_file(OUTPUT_FILE_NEO_ERROR,
+                       get_data_match(/^Neo.Error:/))
   end
 
   def neo_log
-    output_log_to_file(OUTPUT_FILE_NEO_LOG, get_data_match(/^Neo.Log:/))
+    output_log_to_file(OUTPUT_FILE_NEO_LOG,
+                       get_data_match(/^Neo.Log:/))
   end
 
 
   def job_recommendation_log
-    data = Array.new
-    get_all_data.each do |line|
-      data << line if has_job_recommendation_keyword(line)
-    end
-
-    output_log_to_file(OUTPUT_FILE_JOB_RECOMMENDATION, data)
+    output_log_to_file(OUTPUT_FILE_JOB_RECOMMENDATION,
+                       get_all_data.select{|line| has_job_recommendation_keyword(line)})
   end
 
 private
