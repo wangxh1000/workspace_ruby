@@ -58,6 +58,10 @@ private
         (line =~ /^\[Error\]/)
   end
 
+  def has_temp_keyword(line)
+    (line =~ /^.*\)/)
+  end
+
 end
 
 end

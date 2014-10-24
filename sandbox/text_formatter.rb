@@ -17,7 +17,21 @@ class TextFormatter
     file_appender.write_new_file(result)
   end
 
+  def stringbuilder_append
+    input_log = Log::InputLog.new
+    file_appender = Log::FileAppender.new(Log::FileAppender::STRING_BUILDER_APPEND)
+
+    result = []
+
+    input_log.all_lines.each do |line|
+      line = 'sb.Append("' + line.gsub(/"/, '""').chomp + '" & vbCrLf)'
+      result << line
+    end
+
+    file_appender.write_new_file(result)
+  end
+
 end
 
 test_formatter = TextFormatter.new
-test_formatter.rspec_test
+test_formatter.stringbuilder_append

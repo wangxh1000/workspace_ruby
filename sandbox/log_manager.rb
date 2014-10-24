@@ -1,5 +1,5 @@
-require '../util/log/input_log'
-require '../util/log/file_appender'
+require_relative '../util/log/input_log'
+require_relative '../util/log/file_appender'
 
 class LogManager
 
@@ -28,11 +28,19 @@ class LogManager
     file_appender.write_new_file(input_log.select(:has_job_recommendation_keyword))
   end
 
+  def temp_log
+    input_log = Log::InputLog.new
+    file_appender = Log::FileAppender.new(Log::FileAppender::TEMP_LOG)
+    file_appender.write_new_file(input_log.select(:has_temp_keyword))
+  end
+
+
+
 private
 
 end
 
 log_manager = LogManager.new
-log_manager.neo_log
-log_manager.reveal_log
-log_manager.job_recommendation_log
+log_manager.temp_log
+#log_manager.reveal_log
+#log_manager.job_recommendation_log

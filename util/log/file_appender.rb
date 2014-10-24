@@ -10,6 +10,10 @@ module Log
 
     RSPEC_TEST = 'c:/Log/RspecTest.txt'
 
+    STRING_BUILDER_APPEND = 'c:/Log/StringBuilder.txt'
+
+    TEMP_LOG = 'c:/Log/templog.txt'
+
     def initialize(file_name)
       @file_name = file_name
     end
