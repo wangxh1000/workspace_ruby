@@ -38,15 +38,12 @@ class Job_Crawl_Parser
       @talent_need.introduction_type = @sheet.Range("Q#{@current_line}").value
 
       puts @talent_need.to_s
-      #@all_talent_needs.push(@talent_need)
+
       @current_line += 1
-      puts @current_line
     end
 
     @workbook.close
     @excel.Quit
-
-    #puts @all_talent_needs.to_s
 
   end
 
